@@ -18,7 +18,7 @@ class PWA {
         console.log("PWA: Registering Service Worker...");
 
         this.swRegistration = await navigator.serviceWorker.register(
-          "./sw.js",
+          "./src/features/pwa/sw.js",
           {
             scope: "/",
           }
