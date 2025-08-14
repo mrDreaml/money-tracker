@@ -19,7 +19,7 @@
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     width: 100%;
     align-items: center;
-    overflow: scroll;
+    overflow-y: scroll;
     padding-top: 50px;
     height: calc(100dvh - 5em);
     z-index: 1000;
