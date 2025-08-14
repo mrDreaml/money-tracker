@@ -24,4 +24,5 @@
     height: calc(100dvh - 5em);
     z-index: 1000;
     gap: 2em;
+    background-color: var(--color-pallete-0);
 }

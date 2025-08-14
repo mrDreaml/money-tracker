@@ -22,6 +22,7 @@
     padding: 50px 1em 0 1em;
     height: calc(100dvh - 5em);
     z-index: 1000;
+    background-color: var(--color-pallete-0);
 }
 
 .layout__page-content-wrapper {
