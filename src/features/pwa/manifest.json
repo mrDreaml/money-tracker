@@ -7,7 +7,7 @@
   "background_color": "#ffffff",
   "theme_color": "#007bff",
   "orientation": "portrait-primary",
-  "scope": "/",
+  "scope": "/money-tracker/",
   "lang": "ru",
   "categories": [
     "finance",
