@@ -1,7 +1,7 @@
-@import url("/src/features/page/styles/common.css");
-@import url("/src/features/main-navigation/components/nav-section/index.css");
-@import url("/src/features/add-spends/components/spends-form/index.css");
-@import url("/src/features/add-spends/components/recent-added-list/index.css");
+@import url("../features/page/styles/common.css");
+@import url("../features/main-navigation/components/nav-section/index.css");
+@import url("../features/add-spends/components/spends-form/index.css");
+@import url("../features/add-spends/components/recent-added-list/index.css");
 
 .layout {
     display: flex;
