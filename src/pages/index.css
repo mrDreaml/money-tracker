@@ -19,7 +19,7 @@
     width: 100%;
     align-items: center;
     overflow-y: scroll;
-    padding-top: 50px;
+    padding: 50px 1em 0 1em;
     height: calc(100dvh - 5em);
     z-index: 1000;
 }
