@@ -2,7 +2,7 @@
   "name": "Gold Rock - Money Tracker",
   "short_name": "Gold Rock",
   "description": "Приложение для отслеживания расходов и управления бюджетом",
-  "start_url": "/",
+  "start_url": "/money-tracker/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
