@@ -2,7 +2,9 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
-import { ROOT_DIR } from "./fsHelper.js";
+
+const PORT = 3000;
+const HOST = "192.168.0.109";
 
 const getContentType = (ext) => {
   const mimeTypes = {
@@ -32,9 +34,8 @@ const sendFile = (res, filePath) => {
   });
 };
 
-// TODO: add to config main page
-export const devServer = async (CONFIG) => {
-  const BUILD_DIR = path.join(ROOT_DIR, CONFIG.OUTPUT_DIR);
+const devServer = async () => {
+  const BUILD_DIR = path.join(process.cwd(), "src");
 
   const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url);
@@ -46,11 +47,7 @@ export const devServer = async (CONFIG) => {
     }
 
     // 1. Пытаемся найти страницу в /pages
-    const pageHtmlAssetsPath = path.join(
-      BUILD_DIR,
-      ...CONFIG.PAGES_DIR_PATH,
-      pathname
-    );
+    const pageHtmlAssetsPath = path.join(BUILD_DIR, "pages", pathname);
     const pageHtmlPath = path.join(pageHtmlAssetsPath, "index.html");
 
     if (fs.existsSync(pageHtmlPath)) {
@@ -73,7 +70,9 @@ export const devServer = async (CONFIG) => {
     res.end("404 Not Found");
   });
 
-  server.listen(CONFIG.DEV_SERVER.PORT, "192.168.0.109", () => {
-    console.log(`Server running on http://localhost:${CONFIG.DEV_SERVER.PORT}`);
+  server.listen(PORT, HOST, () => {
+    console.log(`Server running on ${HOST}:${PORT}`);
   });
 };
+
+devServer();
