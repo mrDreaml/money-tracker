@@ -20,7 +20,7 @@ class PWA {
         this.swRegistration = await navigator.serviceWorker.register(
           "./src/features/pwa/sw.js",
           {
-            scope: "/money-tracker/",
+            scope: "/money-tracker/src/features/pwa/",
           }
         );
 
