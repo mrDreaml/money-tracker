@@ -1,5 +1,5 @@
-import SpendsHistoryService from "./src/features/spends/services/spendsHistory.js";
-import "./src/features/spends-history/components/spends-history-table/index.js";
+import SpendsHistoryService from "../../features/spends/services/spendsHistory.js";
+import "../../features/spends-history/components/spends-history-table/index.js";
 
 const main = async () => {
   await customElements.whenDefined("spends-history-table");

@@ -1,4 +1,4 @@
-import { formatCurrency } from "/src/features/format-value/utils/currency.js";
+import { formatCurrency } from "../../../format-value/utils/currency.js";
 
 const MAX_ITEMS = 5;
 

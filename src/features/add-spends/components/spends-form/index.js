@@ -1,4 +1,4 @@
-import { formatCurrency } from "/src/features/format-value/utils/currency.js";
+import { formatCurrency } from "../../../format-value/utils/currency.js";
 
 const VALUE_STEP = 1;
 const MAX_VALUE = 99999;
