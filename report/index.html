@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/src/pages/report/index.css">
+  <link rel="stylesheet" href="/src/features/spends-chart/components/spends-per-periods/index.css">
+  <link rel="icon" href="/src/features/page/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/src/features/page/assets/icon-192x192.png">
+  <link rel="manifest" href="/src/features/pwa/manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="Приложение для отслеживания расходов и управления бюджетом">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Gold Rock">
+  <title>Gold Rock</title>
+</head>
+
+<body class="layout">
+  <main class="layout__page-content">
+    <spends-per-day id="spends-per-day">
+      <h1 data-id="spd-value" class="spd-value">0.000</h1>
+      <span class="spd-label">spd</span>
+    </spends-per-day>
+    <top-spends-chart id="top-spends-chart">
+      <div class="chart-container">
+        <canvas data-id="chart"></canvas>
+      </div>
+
+
+      <div class="chart-legend" data-id="chart-legend"></div>
+    </top-spends-chart>
+    <spends-per-periods id="spends-per-periods">
+      <div class="spends-per-periods__daily-chart">
+        <canvas data-id="daily-chart"></canvas>
+      </div>
+      <div class="spends-per-periods__weekly-chart">
+        <canvas data-id="weekly-chart"></canvas>
+      </div>
+    </spends-per-periods>
+  </main>
+
+  <nav-section>
+    <a href="/report" class="nav-section__item" active>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+        fill="var(--color-text-1)">
+        <path
+          d="M280-280h80v-200h-80v200Zm320 0h80v-400h-80v400Zm-160 0h80v-120h-80v120Zm0-200h80v-80h-80v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" />
+      </svg>
+      <b class="nav-section__item-title">Report</b>
+    </a>
+    <a href="/" class="nav-section__item">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+        fill="var(--color-text-1)">
+        <path
+          d="M180-120q-25 0-42.5-17.5T120-180v-76l160-142v278H180Zm140 0v-160h320v160H320Zm360 0v-328L509-600l121-107 190 169q10 9 15 20.5t5 24.5v313q0 25-17.5 42.5T780-120H680ZM120-310v-183q0-13 5-25t15-20l300-266q8-8 18.5-11.5T480-819q11 0 21.5 3.5T520-804l80 71-480 423Z" />
+      </svg>
+      <b class="nav-section__item-title">Home</b>
+    </a>
+    <a href="/history" class="nav-section__item">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+        fill="var(--color-text-1)">
+        <path
+          d="M480-120q-138 0-240.5-91.5T122-440h82q14 104 92.5 172T480-200q117 0 198.5-81.5T760-480q0-117-81.5-198.5T480-760q-69 0-129 32t-101 88h110v80H120v-240h80v94q51-64 124.5-99T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z" />
+      </svg>
+      <b class="nav-section__item-title">History</b>
+    </a>
+  </nav-section>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "chart.js": "https://cdn.jsdelivr.net/npm/chart.js"
+      }
+    }
+  </script>
+  <script type="module" src="/src/pages/report/index.js"></script>
+</body>
+
+</html>
