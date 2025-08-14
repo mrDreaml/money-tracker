@@ -1,6 +1,6 @@
-@import url("/src/features/page/styles/common.css");
-@import url("/src/features/main-navigation/components/nav-section/index.css");
-@import url("/src/features/spends-history/components/spends-history-table/index.css");
+@import url("./src/features/page/styles/common.css");
+@import url("./src/features/main-navigation/components/nav-section/index.css");
+@import url("./src/features/spends-history/components/spends-history-table/index.css");
 
 
 .layout {
