@@ -1,0 +1,108 @@
+spends-history-table {
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.spends-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.spends-history-table th {
+    background: var(--color-pallete-1, #f8f9fa);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.spends-history-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.spends-history-row {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.spends-history-row:hover {
+    background-color: var(--color-pallete-3, #f8f9fa);
+    transform: scale(1.01);
+}
+
+.spends-history-row.amount {
+    font-weight: 600;
+    color: var(--color-pallete-2, #007bff);
+}
+
+.spends-history-row.purpose {
+    color: #333;
+}
+
+.spends-history-row.date {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Стили для режима удаления */
+.spends-history-row.blurred {
+    filter: blur(2px);
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.spends-history-row.delete-mode {
+    background-color: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 4px;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.delete-btn {
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #dc3545 !important;
+    transform: translateX(-50%) scale(1.05);
+}
+
+.delete-btn:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .spends-history-table {
+        font-size: 0.9em;
+    }
+
+    .spends-history-table th,
+    .spends-history-table td {
+        padding: 8px 12px;
+    }
+
+}
+
+.delete-btn {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: .5em;
+    font-size: 1.2em;
+}

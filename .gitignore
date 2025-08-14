@@ -1,12 +1,2 @@
-/node_modules
-/dist
-/build
-/public
-/src
-/test
-/docs
-/examples
-
-package-lock.json
 .env
 /.cursor

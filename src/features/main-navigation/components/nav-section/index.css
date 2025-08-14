@@ -1,0 +1,32 @@
+nav-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em;
+    background-color: var(--color-pallete-1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav-section__item {
+    color: var(--color-text-1);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .25em;
+
+    &[active] {
+        color: var(--color-pallete-4);
+
+        svg {
+            fill: var(--color-pallete-4);
+        }
+    }
+}
+
+.nav-section__item-title {
+    font-size: .8em;
+}

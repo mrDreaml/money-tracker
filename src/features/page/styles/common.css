@@ -1,0 +1,36 @@
+/* 
+ * CSS Rule: Use em units for font-size, padding, margin, and other size-related properties
+ * This provides better scalability and accessibility
+ */
+* {
+    font-family: 'Roboto', sans-serif;
+    /* Prevent double-tap zoom on iPhone */
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-pallete-0);
+
+
+    --color-pallete-0: #fff;
+    --color-pallete-1: #FAF7F3;
+    --color-pallete-2: #F0E4D3;
+    --color-pallete-3: #DCC5B2;
+    --color-pallete-4: #D9A299;
+
+    --color-text-1: #222;
+    --color-text-2: #666;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+input:focus {
+    outline: none;
+}

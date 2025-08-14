@@ -1,0 +1,52 @@
+spends-per-periods {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.spends-per-periods__daily-chart,
+.spends-per-periods__weekly-chart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background: var(--color-pallete-2);
+    border-radius: 2em;
+    padding: 1em;
+    transition: all 0.3s ease;
+}
+
+
+
+.spends-per-periods__daily-chart canvas,
+.spends-per-periods__weekly-chart canvas {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #999;
+    text-align: center;
+    padding: 2em;
+}
+
+.empty-icon {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 1.1em;
+    margin: 0;
+    color: #666;
+}

@@ -1,0 +1,27 @@
+@import url("/src/features/page/styles/common.css");
+@import url("/src/features/main-navigation/components/nav-section/index.css");
+@import url("/src/features/spends-per-day/components/spends-per-day/index.css");
+@import url("/src/features/spends-chart/components/top-spends-chart/index.css");
+@import url("/src/features/spends-chart/components/spends-per-periods/index.css");
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    background-color: var(--color-pallete-1);
+}
+
+.layout__page-content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 2em 2em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    align-items: center;
+    overflow: scroll;
+    padding-top: 50px;
+    height: calc(100dvh - 5em);
+    z-index: 1000;
+    gap: 2em;
+}

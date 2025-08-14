@@ -1,0 +1,16 @@
+spends-per-day {
+    display: flex;
+    gap: .5em;
+}
+
+.spd-value {
+    font-size: 2em;
+}
+
+.spd-label {
+    font-size: 1em;
+    align-self: center;
+    position: relative;
+    top: .3em;
+    color: var(--color-text-2);
+}
