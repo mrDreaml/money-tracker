@@ -37,7 +37,7 @@ nav-section {
 
 
 ::view-transition-new(content) {
-    animation: slide-from-top 1s ease-in-out;
+    animation: slide-from-top .3s ease-in-out;
 }
 
 
