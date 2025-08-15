@@ -11,6 +11,7 @@
 }
 
 .layout__page-content {
+    view-transition-name: content;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -19,7 +20,7 @@
     width: 100%;
     align-items: center;
     overflow-y: scroll;
-    padding: 50px 1em 0 1em;
+    padding: 2em 1em 1em 1em;
     height: calc(100dvh - 5em);
     z-index: 1000;
     background-color: var(--color-pallete-0);

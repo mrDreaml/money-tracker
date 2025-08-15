@@ -2,56 +2,11 @@ const CACHE_NAME = "gold-rock-v1.0.0";
 const STATIC_CACHE = "gold-rock-static-v1.0.0";
 const DYNAMIC_CACHE = "gold-rock-dynamic-v1.0.0";
 
-// Файлы для кэширования при установке
-// Паттерны для автоматического определения файлов для кэширования
-const STATIC_FILE_PATTERNS = [
-  "/",
-  "/pages/**/index.{html,css,js}",
-  "/features/**/*.{js,css}",
-  "/features/pwa/manifest.json",
-  "/features/page/assets/*",
-];
-
-// Функция для получения списка файлов по паттернам
-async function getStaticFiles() {
-  try {
-    const cache = await caches.open(STATIC_CACHE);
-    const requests = await Promise.all(
-      STATIC_FILE_PATTERNS.map((pattern) =>
-        fetch(pattern)
-          .then((response) => (response.ok ? response : null))
-          .catch(() => null)
-      )
-    );
-
-    return requests.filter((req) => req !== null);
-  } catch (error) {
-    console.error("Error getting static files:", error);
-    return [];
-  }
-}
-
 const STATIC_FILES = getStaticFiles();
 
 // Установка Service Worker
-self.addEventListener("install", (event) => {
+self.addEventListener("install", () => {
   console.log("Service Worker: Installing...");
-
-  event.waitUntil(
-    caches
-      .open(STATIC_CACHE)
-      .then((cache) => {
-        console.log("Service Worker: Caching static files");
-        return cache.addAll(STATIC_FILES);
-      })
-      .then(() => {
-        console.log("Service Worker: Static files cached");
-        return self.skipWaiting();
-      })
-      .catch((error) => {
-        console.error("Service Worker: Error caching static files", error);
-      })
-  );
 });
 
 // Активация Service Worker
@@ -95,8 +50,6 @@ self.addEventListener("fetch", (event) => {
 });
 
 async function handleRequest(request) {
-  const url = new URL(request.url);
-
   // Для HTML страниц используем Network First
   if (request.headers.get("accept").includes("text/html")) {
     return handleHtmlRequest(request);
@@ -131,9 +84,6 @@ async function handleHtmlRequest(request) {
   if (cachedResponse) {
     return cachedResponse;
   }
-
-  // Если нет в кэше, возвращаем офлайн страницу
-  return caches.match("/pages/offline.html");
 }
 
 async function handleStaticRequest(request) {

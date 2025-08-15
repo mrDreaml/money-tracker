@@ -30,3 +30,23 @@ nav-section {
 .nav-section__item-title {
     font-size: .8em;
 }
+
+@view-transition {
+    navigation: auto;
+}
+
+
+::view-transition-new(content) {
+    animation: slide-from-top 1s ease-in-out;
+}
+
+
+@keyframes slide-from-top {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

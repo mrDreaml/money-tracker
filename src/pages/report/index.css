@@ -12,6 +12,7 @@
 }
 
 .layout__page-content {
+    view-transition-name: content;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
