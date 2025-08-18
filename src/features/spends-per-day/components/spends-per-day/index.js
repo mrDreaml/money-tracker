@@ -25,7 +25,7 @@ class View extends HTMLElement {
 
     let lastTime = 0;
     const animationFrame = (time) => {
-      if (time - lastTime < 100) {
+      if (time - lastTime < 1000) {
         return requestAnimationFrame(animationFrame);
       }
       this.render();
