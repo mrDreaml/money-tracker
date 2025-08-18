@@ -28,7 +28,7 @@ class View extends HTMLElement {
     this.#tbodyEl.innerHTML = "";
 
     this.getData()
-      .reverse()
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
       .forEach((item, index) => {
         const row = document.createElement("tr");
         row.className = "spends-history-row";

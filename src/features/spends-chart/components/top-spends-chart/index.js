@@ -238,10 +238,11 @@ class View extends HTMLElement {
 
   #getTopSpends(limit) {
     const dataWithUniquePurposes = this.getData().reduce((acc, item) => {
-      if (!acc[item.purpose]) {
-        acc[item.purpose] = item;
+      const purpose = item.purpose.toLowerCase().trim();
+      if (!acc[purpose]) {
+        acc[purpose] = item;
       } else {
-        acc[item.purpose].amount += item.amount;
+        acc[purpose].amount += item.amount;
       }
 
       return acc;
