@@ -3,13 +3,13 @@ import { formatCurrency } from "../../../format-value/utils/currency.js";
 class View extends HTMLElement {
   static observedAttributes = [];
   #tbodyEl = null;
-  #data = [];
   #longPressTimer = null;
   #longPressDelay = 1000;
   #currentLongPressRow = null;
   #deleteBtnEl = null;
   #activeRow = null;
   onDelete = () => {};
+  getData = () => [];
 
   constructor() {
     super();
@@ -20,44 +20,28 @@ class View extends HTMLElement {
     this.#initListeners();
   }
 
-  connectedCallback() {
-    console.log("Spends history table component added to page.");
-  }
-
-  disconnectedCallback() {
-    console.log("Spends history table component removed from page.");
-  }
-
-  adoptedCallback() {
-    console.log("Spends history table component moved to new page.");
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`Attribute ${name} has changed.`);
-  }
-
-  // Метод render для отображения данных
-  render(data) {
-    this.#data = data || [];
+  render() {
     this.#renderTable();
   }
 
   #renderTable() {
     this.#tbodyEl.innerHTML = "";
 
-    this.#data.forEach((item, index) => {
-      const row = document.createElement("tr");
-      row.className = "spends-history-row";
-      row.dataset.index = index;
+    this.getData()
+      .reverse()
+      .forEach((item, index) => {
+        const row = document.createElement("tr");
+        row.className = "spends-history-row";
+        row.dataset.index = index;
 
-      row.innerHTML = `
+        row.innerHTML = `
         <td class="amount">${formatCurrency(item.amount)}</td>
         <td class="purpose">${item.purpose}</td>
         <td class="date">${this.#formatDate(item.date)}</td>
       `;
 
-      this.#tbodyEl.appendChild(row);
-    });
+        this.#tbodyEl.appendChild(row);
+      });
   }
 
   #formatDate(date) {

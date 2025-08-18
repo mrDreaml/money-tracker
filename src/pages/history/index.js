@@ -7,7 +7,8 @@ const main = async () => {
 
   const spendsHistoryTableEl = document.getElementById("spends-history-table");
 
-  spendsHistoryTableEl.render(SpendsHistoryService.items);
+  spendsHistoryTableEl.getData = () => SpendsHistoryService.items;
+  spendsHistoryTableEl.render();
   spendsHistoryTableEl.onDelete = (index) => {
     SpendsHistoryService.removeItem(index);
   };
