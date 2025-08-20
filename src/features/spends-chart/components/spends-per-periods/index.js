@@ -6,6 +6,7 @@ class View extends HTMLElement {
   #dailyChart = null;
   #weeklyChart = null;
   #data = [];
+  #totalSpendsEl = null;
   #colors = [
     "#FF6384",
     "#36A2EB",
@@ -28,6 +29,7 @@ class View extends HTMLElement {
     // Query for elements after the component is connected to DOM
     this.#dailyChartEl = this.querySelector("[data-id='daily-chart']");
     this.#weeklyChartEl = this.querySelector("[data-id='weekly-chart']");
+    this.#totalSpendsEl = this.querySelector("[data-id='total-spends-value']");
   }
 
   disconnectedCallback() {
@@ -57,6 +59,7 @@ class View extends HTMLElement {
   render() {
     this.#renderDailyChart();
     this.#renderWeeklyChart();
+    this.#totalSpendsEl.textContent = this.#getTotalSpends();
   }
 
   #initListeners() {
@@ -75,6 +78,12 @@ class View extends HTMLElement {
     if (this.#dailyChart || this.#weeklyChart) {
       this.style.cursor = "default";
     }
+  }
+
+  #getTotalSpends() {
+    const data = this.getData();
+    if (!data || data.length === 0) return 0;
+    return data.reduce((acc, item) => acc + item.amount, 0).toFixed(3);
   }
 
   #renderDailyChart() {

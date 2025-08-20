@@ -1,6 +1,7 @@
 import "../features/add-spends/components/spends-form/index.js";
 import "../features/add-spends/components/recent-added-list/index.js";
 import "../features/main-navigation/components/nav-section/index.js";
+import "../features/mobile-only/components/index.js";
 import SpendsHistory from "../features/spends/services/spendsHistory.js";
 
 const main = async () => {

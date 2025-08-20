@@ -5,7 +5,7 @@ class View extends HTMLElement {
   #tbodyEl = null;
   #longPressTimer = null;
   #longPressDelay = 1000;
-  #currentLongPressRow = null;
+  #emptyTableEl = null;
   #deleteBtnEl = null;
   #activeRow = null;
   onDelete = () => {};
@@ -17,6 +17,7 @@ class View extends HTMLElement {
     this.#deleteBtnEl = this.querySelector(
       "[data-id='spends-history-table-delete-btn']"
     );
+    this.#emptyTableEl = this.querySelector("[data-id='empty-table']");
     this.#initListeners();
   }
 
@@ -26,22 +27,26 @@ class View extends HTMLElement {
 
   #renderTable() {
     this.#tbodyEl.innerHTML = "";
+    const data = this.getData();
 
-    this.getData()
-      .reverse()
-      .forEach((item, index, arr) => {
-        const row = document.createElement("tr");
-        row.className = "spends-history-row";
-        row.dataset.index = arr.length - index - 1;
+    if (data.length === 0) {
+      this.#emptyTableEl.removeAttribute("hidden");
+      return;
+    }
 
-        row.innerHTML = `
+    data.reverse().forEach((item, index, arr) => {
+      const row = document.createElement("tr");
+      row.className = "spends-history-row";
+      row.dataset.index = arr.length - index - 1;
+
+      row.innerHTML = `
         <td class="amount">${formatCurrency(item.amount)}</td>
         <td class="purpose">${item.purpose}</td>
         <td class="date">${this.#formatDate(item.date)}</td>
       `;
 
-        this.#tbodyEl.appendChild(row);
-      });
+      this.#tbodyEl.appendChild(row);
+    });
   }
 
   #formatDate(date) {
@@ -79,8 +84,6 @@ class View extends HTMLElement {
   #handleTouchStart(e) {
     const row = e.target.closest(".spends-history-row");
     if (!row) return;
-
-    this.#currentLongPressRow = row;
 
     this.#longPressTimer = setTimeout(() => {
       this.#showDeleteMode(row);
@@ -130,7 +133,6 @@ class View extends HTMLElement {
     });
 
     this.#deleteBtnEl.setAttribute("hidden", "");
-    this.#currentLongPressRow = null;
     this.#activeRow = null;
   }
 }
