@@ -25,15 +25,12 @@ class View extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("Spends per periods component added to page.");
-    // Query for elements after the component is connected to DOM
     this.#dailyChartEl = this.querySelector("[data-id='daily-chart']");
     this.#weeklyChartEl = this.querySelector("[data-id='weekly-chart']");
     this.#totalSpendsEl = this.querySelector("[data-id='total-spends-value']");
   }
 
   disconnectedCallback() {
-    console.log("Spends per periods component removed from page.");
     if (this.#dailyChart) {
       this.#dailyChart.destroy();
     }
@@ -42,20 +39,10 @@ class View extends HTMLElement {
     }
   }
 
-  adoptedCallback() {
-    console.log("Spends per periods component moved to new page.");
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`Attribute ${name} has changed.`);
-  }
-
-  // Метод инициализации
   init() {
     this.render();
   }
 
-  // Метод отрисовки
   render() {
     this.#renderDailyChart();
     this.#renderWeeklyChart();
@@ -63,7 +50,6 @@ class View extends HTMLElement {
   }
 
   #initListeners() {
-    // Обработчики для интерактивности
     this.addEventListener("mouseenter", this.#handleMouseEnter.bind(this));
     this.addEventListener("mouseleave", this.#handleMouseLeave.bind(this));
   }
@@ -87,13 +73,11 @@ class View extends HTMLElement {
   }
 
   #renderDailyChart() {
-    // Проверяем, что элемент графика существует
     if (!this.#dailyChartEl) {
       console.warn("Daily chart element not found, cannot render chart");
       return;
     }
 
-    // Уничтожаем предыдущий график если он существует
     if (this.#dailyChart) {
       this.#dailyChart.destroy();
     }
@@ -105,7 +89,6 @@ class View extends HTMLElement {
       return;
     }
 
-    // Подготавливаем данные для Chart.js
     const chartData = {
       labels: dailyData.map((item) => item.date),
       datasets: [
@@ -184,7 +167,6 @@ class View extends HTMLElement {
       return;
     }
 
-    // Уничтожаем предыдущий график если он существует
     if (this.#weeklyChart) {
       this.#weeklyChart.destroy();
     }
@@ -196,7 +178,6 @@ class View extends HTMLElement {
       return;
     }
 
-    // Подготавливаем данные для Chart.js
     const chartData = {
       labels: weeklyData.map((item) => item.week),
       datasets: [
@@ -272,12 +253,11 @@ class View extends HTMLElement {
     const data = this.getData();
     if (!data || data.length === 0) return [];
 
-    // Группируем данные по дням
     const dailyMap = new Map();
 
     data.forEach((item) => {
       const date = new Date(item.date);
-      const dateKey = date.toISOString().split("T")[0]; // YYYY-MM-DD
+      const dateKey = date.toISOString().split("T")[0];
 
       if (dailyMap.has(dateKey)) {
         dailyMap.set(dateKey, dailyMap.get(dateKey) + item.amount);
@@ -286,7 +266,6 @@ class View extends HTMLElement {
       }
     });
 
-    // Преобразуем в массив и сортируем по дате
     const dailyData = Array.from(dailyMap.entries())
       .map(([date, amount]) => ({
         date: new Date(date).toLocaleDateString("en-US", {
@@ -296,7 +275,6 @@ class View extends HTMLElement {
         amount: amount,
       }))
       .sort((a, b) => new Date(a.date) - new Date(b.date));
-
     // Возвращаем последние 7 дней
     return dailyData.slice(-7);
   }
@@ -305,7 +283,6 @@ class View extends HTMLElement {
     const data = this.getData();
     if (!data || data.length === 0) return [];
 
-    // Группируем данные по неделям
     const weeklyMap = new Map();
 
     data.forEach((item) => {
@@ -320,7 +297,6 @@ class View extends HTMLElement {
       }
     });
 
-    // Преобразуем в массив и сортируем по дате
     const weeklyData = Array.from(weeklyMap.entries())
       .map(([weekKey, amount]) => {
         const weekStart = new Date(weekKey);
@@ -342,7 +318,6 @@ class View extends HTMLElement {
         (a, b) =>
           new Date(a.week.split(" - ")[0]) - new Date(b.week.split(" - ")[0])
       );
-
     // Возвращаем последние 4 недели
     return weeklyData.slice(-4);
   }
@@ -350,7 +325,7 @@ class View extends HTMLElement {
   #getWeekStart(date) {
     const d = new Date(date);
     const day = d.getDay();
-    const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Понедельник как начало недели
+    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
     return new Date(d.setDate(diff));
   }
 

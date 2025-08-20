@@ -2,8 +2,6 @@ const CACHE_NAME = "gold-rock-v1.0.0";
 const STATIC_CACHE = "gold-rock-static-v1.0.0";
 const DYNAMIC_CACHE = "gold-rock-dynamic-v1.0.0";
 
-const STATIC_FILES = getStaticFiles();
-
 // Установка Service Worker
 self.addEventListener("install", () => {
   console.log("Service Worker: Installing...");

@@ -25,40 +25,26 @@ class View extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("Top spends chart component added to page.");
-    // Query for elements after the component is connected to DOM
     this.#chartEl = this.querySelector("[data-id='chart']");
     this.#chartLegendEl = this.querySelector("[data-id='chart-legend']");
   }
 
   disconnectedCallback() {
-    console.log("Top spends chart component removed from page.");
     if (this.#chart) {
       this.#chart.destroy();
     }
   }
 
-  adoptedCallback() {
-    console.log("Top spends chart component moved to new page.");
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`Attribute ${name} has changed.`);
-  }
-
-  // Метод инициализации
   init() {
     this.render();
   }
 
-  // Метод отрисовки
   render() {
     this.#renderChart();
     this.#renderLegend();
   }
 
   #initListeners() {
-    // Обработчики для интерактивности
     this.addEventListener("mouseenter", this.#handleMouseEnter.bind(this));
     this.addEventListener("mouseleave", this.#handleMouseLeave.bind(this));
   }
@@ -76,18 +62,15 @@ class View extends HTMLElement {
   }
 
   #renderChart() {
-    // Проверяем, что элемент графика существует
     if (!this.#chartEl) {
       console.warn("Chart element not found, cannot render chart");
       return;
     }
 
-    // Уничтожаем предыдущий график если он существует
     if (this.#chart) {
       this.#chart.destroy();
     }
 
-    // Получаем топ 10 по amount
     const topData = this.#getTopSpends(10);
 
     if (topData.length === 0) {
@@ -97,7 +80,6 @@ class View extends HTMLElement {
 
     const topDataColors = this.#colors.slice(0, topData.length);
 
-    // Подготавливаем данные для Chart.js
     const chartData = {
       labels: topData.map((item) => item.purpose),
       datasets: [
@@ -115,7 +97,6 @@ class View extends HTMLElement {
       ],
     };
 
-    // Создаем новый график
     this.#chart = new Chart(this.#chartEl, {
       type: "doughnut",
       data: chartData,
@@ -124,7 +105,7 @@ class View extends HTMLElement {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false, // Скрываем встроенную легенду, создадим свою
+            display: false,
           },
           tooltip: {
             callbacks: {
@@ -144,7 +125,7 @@ class View extends HTMLElement {
           animateRotate: true,
           animateScale: true,
         },
-        cutout: "60%", // Делаем бублик
+        cutout: "60%",
         elements: {
           arc: {
             borderWidth: 2,
@@ -155,7 +136,6 @@ class View extends HTMLElement {
   }
 
   #renderLegend() {
-    // Проверяем, что элемент легенды существует
     if (!this.#chartLegendEl) {
       console.warn("Chart legend element not found, cannot render legend");
       return;
@@ -192,7 +172,6 @@ class View extends HTMLElement {
 
     this.#chartLegendEl.innerHTML = legendHTML;
 
-    // Добавляем обработчики для легенды
     this.#addLegendListeners();
   }
 
@@ -209,12 +188,11 @@ class View extends HTMLElement {
             },
           ]);
 
-          // Эффект увеличения при наведении на легенду
           const originalData = this.#getTopSpends(10).map(
             (item) => item.amount
           );
           this.#chart.data.datasets[0].data = originalData.map((value, i) => {
-            return i === index ? value * 1.1 : value; // Увеличиваем на 10%
+            return i === index ? value * 1.1 : value;
           });
           this.#chart.update("none");
         }
@@ -225,7 +203,6 @@ class View extends HTMLElement {
         if (this.#chart) {
           this.#chart.setActiveElements([]);
 
-          // Возвращаем к исходным размерам
           this.#chart.data.datasets[0].data = this.#getTopSpends(10).map(
             (item) => item.amount
           );
