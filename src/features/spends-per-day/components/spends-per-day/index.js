@@ -14,7 +14,7 @@ class View extends HTMLElement {
     if (items.length === 0) {
       return 0;
     }
-    const firstItem = items[0];
+    const firstItem = items.at(-1);
     const timeDiff = new Date() - new Date(firstItem.date);
     const totalSpends = items.reduce((acc, item) => acc + item.amount, 0);
     return (totalSpends / timeDiff) * 1000 * 60 * 60 * 24;
