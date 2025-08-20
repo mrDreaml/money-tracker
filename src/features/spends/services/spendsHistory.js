@@ -6,7 +6,7 @@ class SpendsHistory {
   }
 
   get items() {
-    return this.#items;
+    return [...this.#items];
   }
 
   #readItems() {

@@ -28,11 +28,11 @@ class View extends HTMLElement {
     this.#tbodyEl.innerHTML = "";
 
     this.getData()
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .forEach((item, index) => {
+      .reverse()
+      .forEach((item, index, arr) => {
         const row = document.createElement("tr");
         row.className = "spends-history-row";
-        row.dataset.index = index;
+        row.dataset.index = arr.length - index - 1;
 
         row.innerHTML = `
         <td class="amount">${formatCurrency(item.amount)}</td>
