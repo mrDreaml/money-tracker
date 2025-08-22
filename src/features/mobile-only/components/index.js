@@ -1,4 +1,4 @@
-import { isMobile } from "../utils/index.js";
+import { isMobile } from "features/mobile-only/utils/index.js";
 
 class MobileOnly extends HTMLElement {
   constructor() {
@@ -14,14 +14,6 @@ class MobileOnly extends HTMLElement {
       mobileOnlyEl.removeAttribute("hidden");
       this.shadowRoot.querySelector("slot").remove();
     }
-  }
-
-  connectedCallback() {
-    console.log("MobileOnly component added to page.");
-  }
-
-  disconnectedCallback() {
-    console.log("MobileOnly component removed from page.");
   }
 }
 

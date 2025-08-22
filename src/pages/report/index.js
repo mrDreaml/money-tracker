@@ -1,8 +1,8 @@
-import SpendsHistoryService from "../../features/spends/services/spendsHistory.js";
-import "../../features/spends-per-day/components/spends-per-day/index.js";
-import "../../features/spends-chart/components/top-spends-chart/index.js";
-import "../../features/spends-chart/components/spends-per-periods/index.js";
-import "../../features/mobile-only/components/index.js";
+import SpendsHistoryService from "features/spends/services/spendsHistory.js";
+import "features/spends-per-day/components/spends-per-day/index.js";
+import "features/spends-chart/components/top-spends-chart/index.js";
+import "features/spends-chart/components/spends-per-periods/index.js";
+import "features/mobile-only/components/index.js";
 
 const main = async () => {
   await customElements.whenDefined("spends-per-day");

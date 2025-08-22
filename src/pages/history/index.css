@@ -21,4 +21,5 @@
     overflow-y: scroll;
     height: calc(100dvh - 5em);
     z-index: 1000;
+    background-color: var(--color-pallete-0);
 }
