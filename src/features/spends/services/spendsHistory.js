@@ -6,7 +6,7 @@ class SpendsHistory {
   }
 
   get items() {
-    return [...this.#items];
+    return this.#items.map((data) => ({ ...data }));
   }
 
   #readItems() {
@@ -31,6 +31,10 @@ class SpendsHistory {
       })
     );
     localStorage.setItem("spends-history", itemsStoreFormat);
+  }
+
+  sync() {
+    this.#readItems();
   }
 
   addItem(amount, purpose) {

@@ -69,6 +69,8 @@ class View extends HTMLElement {
   #getTotalSpends() {
     const data = this.getData();
     if (!data || data.length === 0) return 0;
+
+    console.log(">>", data);
     return data.reduce((acc, item) => acc + item.amount, 0).toFixed(3);
   }
 
