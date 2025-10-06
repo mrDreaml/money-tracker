@@ -21,7 +21,7 @@
     align-items: center;
     overflow-y: scroll;
     padding: 2em 1em 1em 1em;
-    height: calc(100dvh - 5em);
+    height: calc(100dvh - 6em);
     z-index: 1000;
     background-color: var(--color-pallete-0);
 }
