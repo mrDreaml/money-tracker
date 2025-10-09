@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+}
+
+.spend-tag {
+    padding: 1em;
+    border-radius: 1em;
+    background-color: var(--color-pallete-1);
+}
+
+.spend-tag--selected {
+    background-color: var(--color-pallete-2);
+}

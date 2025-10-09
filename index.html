@@ -32,20 +32,28 @@
         <div class="layout">
             <main class="layout__page-content">
                 <div class="layout__page-content-wrapper">
-                    <recent-added-list id="recent-added-list">
-                        <template data-id="recent-added-list__item-template">
-                            <div class="recent-added-item">
-                                <span class="recent-added-item__value" data-id="value"></span>
-                                <span class="recent-added-item__purpose" data-id="purpose"></span>
-                            </div>
-                        </template>
-
-                        <div class="recent-added-list" data-id="recent-added-list"></div>
-                    </recent-added-list>
                     <spends-form id="spends-form">
                         <form class="spends-form" data-id="spends-form">
-                            <input type="text" id="spends-purpose" name="spends-purpose" class="spends-form__purpose"
-                                placeholder="Purpose" maxlength="20" required />
+                            <available-spends id="available-spends">
+                                <template shadowrootmode="open">
+                                    <style>
+                                        @import "src/features/add-spends/components/available-spends/index.css";
+                                    </style>
+
+                                    <div class="spend-tag" data-id="tag" data-value="Одежда">Одежда</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Квартира">Квартира</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Еда">Еда</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Бьюти">Бьюти</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Косметика">Косметика</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Аптека">Аптека</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Транспорт">Транспорт</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Развлечения">Развлечения</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Подарки">Подарки</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Связь">Связь</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Подписки">Подписки</div>
+                                    <div class="spend-tag" data-id="tag" data-value="Прочее">Прочее</div>
+                                </template>
+                            </available-spends>
                             <div class="spends-form__input-container">
                                 <button type="button" name="sub"
                                     class="spends-form__button spends-form__button--sub">-</button>

@@ -6,8 +6,8 @@ class View extends HTMLElement {
   #inputEl;
   #formattedEl;
   #formEl;
-  #purposeEl;
   #value = 0;
+  #availableSpendsEl = null;
 
   onChange = (value, purpose) => {};
 
@@ -19,15 +19,9 @@ class View extends HTMLElement {
     this.#inputEl = document.getElementById("spends-input");
     this.#formattedEl = document.getElementById("spends-input-formatted");
     this.#formEl = this.querySelector("[data-id='spends-form']");
-    this.#purposeEl = document.getElementById("spends-purpose");
+    this.#availableSpendsEl = this.querySelector("#available-spends");
     this.#initListeners();
     this.#renderFormattedValue();
-  }
-
-  setValues(value, purpose) {
-    this.#value = value;
-    this.#purposeEl.value = purpose;
-    this.#setupValue();
   }
 
   #toggleInput() {
@@ -55,6 +49,7 @@ class View extends HTMLElement {
       return;
     }
     this.#value = newValue;
+    this.#inputEl.value = this.#value;
   }
 
   #initListeners() {
@@ -87,14 +82,23 @@ class View extends HTMLElement {
 
     this.#formEl.addEventListener("submit", (e) => {
       e.preventDefault();
+      const { selectedValue: purpose } = this.#availableSpendsEl;
 
-      if (this.#value === 0) {
+      if (!this.#value) {
+        alert("Необходимо указать сумму 🫰");
         return;
       }
-      this.onChange(this.#value, this.#purposeEl.value);
+
+      if (!purpose) {
+        alert("Необходимо выбрать категорию 🤷‍♂️");
+        return;
+      }
+
+      this.onChange(this.#value, purpose);
 
       this.#value = 0;
       this.#setupValue();
+      this.#availableSpendsEl.resetSelectedValue();
     });
   }
 }

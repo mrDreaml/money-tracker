@@ -7,15 +7,6 @@
     gap: 1em;
 }
 
-.spends-form__purpose {
-    border: none;
-    border-radius: 1em;
-    padding: 1em;
-    font-size: 1.2em;
-    background-color: var(--color-pallete-2);
-    color: var(--color-text-1);
-}
-
 .spends-form__input-container {
     display: flex;
     gap: .5em;
@@ -35,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-pallete-2);
+    background-color: var(--color-pallete-1);
     color: var(--color-text-1);
 }
 
@@ -70,5 +61,5 @@
     font-size: 1.2em;
     text-align: center;
     align-self: center;
-    background-color: var(--color-pallete-3);
+    background-color: var(--color-pallete-2);
 }
