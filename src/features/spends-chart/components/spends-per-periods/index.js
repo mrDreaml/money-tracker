@@ -73,7 +73,7 @@ class View extends HTMLElement {
   #renderWeeklyChart() {
     // Проверяем, что элемент графика существует
     if (!this.#weeklyChartEl) {
-      console.warn("Weekly chart element not found, cannot render chart");
+      console.warn("Нет данных");
       return;
     }
 
@@ -84,7 +84,7 @@ class View extends HTMLElement {
     const weeklyData = this.#getWeeklyData();
 
     if (weeklyData.length === 0) {
-      this.#showEmptyState(this.#weeklyChartEl, "No weekly data available");
+      this.#showEmptyState(this.#weeklyChartEl, "Нет данных");
       return;
     }
 
@@ -115,7 +115,7 @@ class View extends HTMLElement {
           },
           title: {
             display: true,
-            text: "Weekly Spends",
+            text: "Недельные траты",
             color: "#333",
             font: {
               size: 16,
