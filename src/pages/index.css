@@ -29,3 +29,7 @@
     max-width: 350px;
     width: 100%;
 }
+
+.spends-form__button {
+    background-color: var(--color-pallete-1);
+}

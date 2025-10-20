@@ -1,7 +1,6 @@
 import "chart.js";
 
 class View extends HTMLElement {
-  #dailyChartEl = null;
   #weeklyChartEl = null;
   #dailyChart = null;
   #weeklyChart = null;
@@ -25,7 +24,6 @@ class View extends HTMLElement {
   }
 
   connectedCallback() {
-    this.#dailyChartEl = this.querySelector("[data-id='daily-chart']");
     this.#weeklyChartEl = this.querySelector("[data-id='weekly-chart']");
     this.#totalSpendsEl = this.querySelector("[data-id='total-spends-value']");
   }
@@ -44,7 +42,6 @@ class View extends HTMLElement {
   }
 
   render() {
-    this.#renderDailyChart();
     this.#renderWeeklyChart();
     this.#totalSpendsEl.textContent = this.#getTotalSpends();
   }
@@ -70,96 +67,7 @@ class View extends HTMLElement {
     const data = this.getData();
     if (!data || data.length === 0) return 0;
 
-    console.log(">>", data);
     return data.reduce((acc, item) => acc + item.amount, 0).toFixed(3);
-  }
-
-  #renderDailyChart() {
-    if (!this.#dailyChartEl) {
-      console.warn("Daily chart element not found, cannot render chart");
-      return;
-    }
-
-    if (this.#dailyChart) {
-      this.#dailyChart.destroy();
-    }
-
-    const dailyData = this.#getDailyData();
-
-    if (dailyData.length === 0) {
-      this.#showEmptyState(this.#dailyChartEl, "No daily data available");
-      return;
-    }
-
-    const chartData = {
-      labels: dailyData.map((item) => item.date),
-      datasets: [
-        {
-          label: "Daily Spends",
-          data: dailyData.map((item) => item.amount),
-          backgroundColor: this.#colors[0],
-          borderColor: this.#colors[0],
-          borderWidth: 2,
-          borderRadius: 8,
-          borderSkipped: false,
-        },
-      ],
-    };
-
-    const config = {
-      type: "bar",
-      data: chartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          },
-          title: {
-            display: true,
-            text: "Daily Spends",
-            color: "#333",
-            font: {
-              size: 16,
-              weight: "bold",
-            },
-          },
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            grid: {
-              color: "rgba(0, 0, 0, 0.1)",
-            },
-            ticks: {
-              color: "#666",
-              font: {
-                size: 12,
-              },
-            },
-          },
-          x: {
-            grid: {
-              display: false,
-            },
-            ticks: {
-              color: "#666",
-              font: {
-                size: 11,
-              },
-              maxRotation: 45,
-            },
-          },
-        },
-        interaction: {
-          intersect: false,
-          mode: "index",
-        },
-      },
-    };
-
-    this.#dailyChart = new Chart(this.#dailyChartEl, config);
   }
 
   #renderWeeklyChart() {

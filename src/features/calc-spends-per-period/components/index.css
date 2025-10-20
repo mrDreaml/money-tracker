@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 300px;
+    align-items: center;
+
+    padding-bottom: 3em;
+    padding-top: 3em;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+
+.date-row {
+    display: flex;
+
+    label {
+        width: 50px;
+    }
+}
+
+.calc-button {
+    border: none;
+    background-color: var(--color-pallete-3);
+    padding: .5em 1em;
+    border-radius: 1em;
+}

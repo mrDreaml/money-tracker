@@ -44,10 +44,23 @@
 
           <div class="chart-legend" data-id="chart-legend"></div>
         </top-spends-chart>
+        <calc-spends-per-period id="calc-spends-per-period">
+          <template shadowrootmode="open">
+            <link rel="stylesheet" href="../src/features/calc-spends-per-period/components/index.css" />
+
+            <div class="date-row">
+              <label for="start-date">C</label>
+              <input type="date" name="start-date" />
+            </div>
+            <div class="date-row">
+              <label for="end-date">По</label>
+              <input type="date" name="end-date" />
+            </div>
+            <button class="calc-button" type="button" data-id="calculate-button">Calculate</button>
+            <span class="calc-result">Spends per period: <b data-id="result-value">0</b></span>
+          </template>
+        </calc-spends-per-period>
         <spends-per-periods id="spends-per-periods">
-          <div class="spends-per-periods__daily-chart">
-            <canvas data-id="daily-chart"></canvas>
-          </div>
           <div class="spends-per-periods__weekly-chart">
             <canvas data-id="weekly-chart"></canvas>
           </div>
