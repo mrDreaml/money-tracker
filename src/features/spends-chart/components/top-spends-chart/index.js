@@ -1,5 +1,7 @@
 import "chart.js";
 
+const LIMIT_SPENDS = 50
+
 class View extends HTMLElement {
   #chartEl = null;
   #chartLegendEl = null;
@@ -15,7 +17,18 @@ class View extends HTMLElement {
     "#FF6384",
     "#C9CBCF",
     "#4BC0C0",
+    "#cb0731ff",
+    "#63ff75ff",
     "#FF6384",
+    "#b463ffff",
+    "#ff63ceff",
+    "#b6ff63ff",
+    "#5b6b00ff",
+    "#ffbe63ff",
+    "#63ff75ff",
+    "#63fffaff",
+    "#63a9ffff",
+    "#4112ffff",
   ];
   getData = () => [];
 
@@ -71,7 +84,7 @@ class View extends HTMLElement {
       this.#chart.destroy();
     }
 
-    const topData = this.#getTopSpends(10);
+    const topData = this.#getTopSpends(LIMIT_SPENDS);
 
     if (topData.length === 0) {
       this.#showEmptyState();
@@ -85,14 +98,12 @@ class View extends HTMLElement {
       datasets: [
         {
           data: topData.map((item) => item.amount),
-          backgroundColor: topDataColors.map((color) =>
-            this.#lightenColor(color, 20)
-          ),
           borderColor: "#ffffff",
-          borderWidth: 2,
+          borderWidth: 1,
           hoverBackgroundColor: topDataColors,
           hoverBorderColor: "#ffffff",
-          hoverBorderWidth: 3,
+          hoverBorderWidth: 0,
+          hoverOffset: 5,
         },
       ],
     };
@@ -141,7 +152,7 @@ class View extends HTMLElement {
       return;
     }
 
-    const topData = this.#getTopSpends(10);
+    const topData = this.#getTopSpends(LIMIT_SPENDS);
 
     if (topData.length === 0) {
       this.#chartLegendEl.innerHTML =
@@ -179,6 +190,9 @@ class View extends HTMLElement {
     const legendItems = this.#chartLegendEl.querySelectorAll(".legend-item");
 
     legendItems.forEach((item, index) => {
+      const topSpendsAmounts = this.#getTopSpends(LIMIT_SPENDS).map(
+            (item) => item.amount
+          )
       item.addEventListener("mouseenter", () => {
         if (this.#chart) {
           this.#chart.setActiveElements([
@@ -188,10 +202,7 @@ class View extends HTMLElement {
             },
           ]);
 
-          const originalData = this.#getTopSpends(10).map(
-            (item) => item.amount
-          );
-          this.#chart.data.datasets[0].data = originalData.map((value, i) => {
+          this.#chart.data.datasets[0].data = topSpendsAmounts.map((value, i) => {
             return i === index ? value * 1.1 : value;
           });
           this.#chart.update("none");
@@ -203,9 +214,7 @@ class View extends HTMLElement {
         if (this.#chart) {
           this.#chart.setActiveElements([]);
 
-          this.#chart.data.datasets[0].data = this.#getTopSpends(10).map(
-            (item) => item.amount
-          );
+          this.#chart.data.datasets[0].data = topSpendsAmounts;
           this.#chart.update("none");
         }
         item.classList.remove("active");
@@ -237,25 +246,6 @@ class View extends HTMLElement {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
-  }
-
-  #lightenColor(color, percent) {
-    const num = parseInt(color.replace("#", ""), 16);
-    const amt = Math.round(2.55 * percent);
-    const R = (num >> 16) + amt;
-    const G = ((num >> 8) & 0x00ff) + amt;
-    const B = (num & 0x0000ff) + amt;
-    return (
-      "#" +
-      (
-        0x1000000 +
-        (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
-        (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
-        (B < 255 ? (B < 1 ? 0 : B) : 255)
-      )
-        .toString(16)
-        .slice(1)
-    );
   }
 
   #showEmptyState() {
