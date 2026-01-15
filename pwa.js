@@ -18,9 +18,9 @@ class PWA {
         console.log("PWA: Registering Service Worker...");
 
         this.swRegistration = await navigator.serviceWorker.register(
-          "./src/features/pwa/sw.js",
+          "./sw.js",
           {
-            scope: "/money-tracker/src/features/pwa/",
+            scope: "/money-tracker/",
           }
         );
 
@@ -86,31 +86,6 @@ class PWA {
         await this.swRegistration.update();
       } catch (error) {
         console.error("PWA: Error checking for updates:", error);
-      }
-    }
-  }
-
-  // Метод для отправки push уведомлений
-  async requestNotificationPermission() {
-    if ("Notification" in window) {
-      const permission = await Notification.requestPermission();
-      console.log("PWA: Notification permission:", permission);
-      return permission === "granted";
-    }
-    return false;
-  }
-
-  // Метод для синхронизации в фоне
-  async registerBackgroundSync() {
-    if (
-      "serviceWorker" in navigator &&
-      "sync" in window.ServiceWorkerRegistration.prototype
-    ) {
-      try {
-        await this.swRegistration.sync.register("background-sync");
-        console.log("PWA: Background sync registered");
-      } catch (error) {
-        console.error("PWA: Background sync registration failed:", error);
       }
     }
   }
