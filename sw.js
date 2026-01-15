@@ -2,6 +2,8 @@ const CACHE_NAME = "v1";
 
 self.addEventListener("install", (event) => {
   console.log("Service Worker: Installing...");
+
+  // TODO: precache?
 });
 
 self.addEventListener("activate", (event) => {
@@ -28,9 +30,9 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  if (url.origin !== location.origin) {
-    return;
-  }
+  // if (url.origin !== location.origin) {
+  //   return;
+  // }
 
   event.respondWith(
     caches.match(request).then((response) => {
@@ -48,4 +50,3 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-console.log(self);
