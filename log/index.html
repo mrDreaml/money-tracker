@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="copy-button">Copy</button>
+    <button id="go-home-button">Go Home</button>
+    <div id="data"></div>
+    <script type="module">
+        import SpendsHistoryService from '../src/features/spends/services/spendsHistory.js'
+
+        const { items } = SpendsHistoryService
+        const itemsText = JSON.stringify(items, undefined, 2)
+        const el = document.createElement('pre')
+        el.textContent = itemsText
+        document.getElementById('data').appendChild(el)
+
+        document.getElementById('copy-button').onclick = async () => {
+            try {
+                await navigator.clipboard.writeText(itemsText);
+                console.log('Text copied to clipboard successfully!');
+                alert('Copied 😊');
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                alert('Can\'t copy 😔');
+            }
+        }
+
+        document.getElementById('go-home-button').onclick = () => window.location.href = '/'
+    </script>
+</body>
+
+</html>

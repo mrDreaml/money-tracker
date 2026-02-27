@@ -33,3 +33,9 @@
 .spends-form__button {
     background-color: var(--color-pallete-1);
 }
+
+.app-version {
+    text-align: center;
+    font-size: .8em;
+    margin-top: 2em;
+}
