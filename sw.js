@@ -1,51 +1,49 @@
-const CACHE_NAME = "v4";
+const CACHE_NAME = "v5";
 
-self.addEventListener("install", (event) => {
+self.addEventListener("install", () => {
   console.log("Service Worker: Installing...");
-
-  // TODO: precache?
+  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
   console.log("Service Worker: Activating...");
 
-  // delete old cache
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames
-          .filter((name) => name !== CACHE_NAME)
-          .map((name) => {
-            console.log(`clean old cache: ${name}`);
-            return caches.delete(name);
-          }),
-      );
-    }),
+    caches
+      .keys()
+      .then((cacheNames) =>
+        Promise.all(
+          cacheNames
+            .filter((name) => name !== CACHE_NAME)
+            .map((name) => {
+              console.log(`clean old cache: ${name}`);
+              return caches.delete(name);
+            }),
+        ),
+      )
+      .then(() => self.clients.claim()),
   );
-
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
-  const url = new URL(request.url);
 
-  // if (url.origin !== location.origin) {
-  //   return;
-  // }
+  if (request.method !== "GET") {
+    return;
+  }
 
+  // Network-first: after deploy users get fresh CSS/HTML, cache is offline fallback
   event.respondWith(
-    caches.match(request).then((response) => {
-      if (response) {
-        return response;
-      }
-
-      return fetch(request).then((responseNew) => {
-        caches
-          .open(CACHE_NAME)
-          .then((cache) => cache.put(request, responseNew));
-        return responseNew.clone();
-      });
-    }),
+    fetch(request)
+      .then((networkResponse) => {
+        if (networkResponse.ok) {
+          const responseToCache = networkResponse.clone();
+          caches
+            .open(CACHE_NAME)
+            .then((cache) => cache.put(request, responseToCache));
+        }
+        return networkResponse;
+      })
+      .catch(() => caches.match(request)),
   );
 });
