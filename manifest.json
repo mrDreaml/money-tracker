@@ -2,12 +2,12 @@
   "name": "Money Tracker",
   "short_name": "Money Tracker",
   "description": "Приложение для отслеживания расходов и управления бюджетом",
-  "start_url": "/money-tracker/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#dff3ef",
   "theme_color": "#5898a0",
   "orientation": "portrait-primary",
-  "scope": "/money-tracker/",
+  "scope": "./",
   "lang": "ru",
   "categories": [
     "finance",
@@ -16,31 +16,31 @@
   ],
   "icons": [
     {
-      "src": "/money-tracker/src/features/page/assets/logo96.png",
+      "src": "./src/features/page/assets/logo96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/money-tracker/src/features/page/assets/logo128.png",
+      "src": "./src/features/page/assets/logo128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/money-tracker/src/features/page/assets/logo144.png",
+      "src": "./src/features/page/assets/logo144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/money-tracker/src/features/page/assets/logo192.png",
+      "src": "./src/features/page/assets/logo192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/money-tracker/src/features/page/assets/logo512.png",
+      "src": "./src/features/page/assets/logo512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"

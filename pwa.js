@@ -1,5 +1,3 @@
-const APP_SCOPE = "/money-tracker/";
-
 class PWA {
   constructor() {
     this.swRegistration = null;
@@ -20,10 +18,12 @@ class PWA {
     }
 
     try {
-      this.swRegistration = await navigator.serviceWorker.register(
-        `${APP_SCOPE}sw.js`,
-        { scope: APP_SCOPE },
-      );
+      const swUrl = new URL("./sw.js", import.meta.url);
+      const scope = new URL("./", import.meta.url);
+
+      this.swRegistration = await navigator.serviceWorker.register(swUrl, {
+        scope: scope.pathname,
+      });
 
       this.swRegistration.addEventListener("updatefound", () => {
         console.log("PWA: Service Worker update found");

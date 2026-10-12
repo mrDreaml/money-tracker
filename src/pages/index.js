@@ -20,7 +20,7 @@ const main = async () => {
     countsToLogI++
 
     if (countsToLogI >= COUNTS_TO_LOG) {
-      window.location.href = '/money-tracker/log/'
+      window.location.href = './log/'
     }
   }
 };

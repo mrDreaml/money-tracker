@@ -12,7 +12,7 @@
     <button id="go-home-button">Go Home</button>
     <div id="data"></div>
     <script type="module">
-        import SpendsHistoryService from '/money-tracker/src/features/spends/services/spendsHistory.js'
+        import SpendsHistoryService from '../src/features/spends/services/spendsHistory.js'
 
         const { items } = SpendsHistoryService
         const itemsText = JSON.stringify(items, undefined, 2)
@@ -32,7 +32,7 @@
         }
 
         document.getElementById('go-home-button').onclick = () => {
-            window.location.href = '/money-tracker/'
+            window.location.href = '../'
         }
     </script>
 </body>
