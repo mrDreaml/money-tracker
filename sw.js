@@ -1,4 +1,4 @@
-const CACHE_NAME = "v6";
+const CACHE_NAME = "v7";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
@@ -32,6 +32,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // Never intercept SW script — browser must always fetch a fresh copy
   if (url.pathname.endsWith("/sw.js")) {
     return;
   }

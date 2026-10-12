@@ -23,10 +23,37 @@ class PWA {
 
       this.swRegistration = await navigator.serviceWorker.register(swUrl, {
         scope: scope.pathname,
+        // GitHub Pages caches sw.js; without this updates may never apply
+        updateViaCache: "none",
       });
 
       this.swRegistration.addEventListener("updatefound", () => {
+        const newWorker = this.swRegistration.installing;
+        if (!newWorker) {
+          return;
+        }
+
         console.log("PWA: Service Worker update found");
+
+        newWorker.addEventListener("statechange", () => {
+          if (
+            newWorker.state === "installed" &&
+            navigator.serviceWorker.controller
+          ) {
+            console.log("PWA: New Service Worker installed, reloading");
+          }
+        });
+      });
+
+      // After skipWaiting + clients.claim, reload once to pick up new assets
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (refreshing) {
+          return;
+        }
+        refreshing = true;
+        console.log("PWA: Service Worker controller changed, reloading");
+        window.location.reload();
       });
     } catch (error) {
       console.error("PWA: Service Worker registration failed:", error);
