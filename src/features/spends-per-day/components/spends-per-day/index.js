@@ -14,11 +14,34 @@ class View extends HTMLElement {
     if (items.length === 0) {
       return 0;
     }
-    const firstItem = items[0];
-    const timeDiffInDays =
-      (new Date() - new Date(firstItem.date)) / (1000 * 60 * 60 * 24);
-    const totalSpends = items.reduce((acc, item) => acc + item.amount, 0);
-    return totalSpends / timeDiffInDays;
+
+    const MS_PER_DAY = 1000 * 60 * 60 * 24;
+    const now = Date.now();
+    const periodStart = new Date();
+    periodStart.setMonth(periodStart.getMonth() - 1);
+
+    const periodItems = items.filter(
+      ({ date }) => new Date(date).getTime() >= periodStart.getTime()
+    );
+
+    if (periodItems.length === 0) {
+      return 0;
+    }
+
+    const totalSpends = periodItems.reduce(
+      (acc, { amount }) => acc + amount,
+      0
+    );
+    const oldestDate = Math.min(
+      ...periodItems.map(({ date }) => new Date(date).getTime())
+    );
+    const daysSpan = (now - oldestDate) / MS_PER_DAY;
+
+    if (daysSpan <= 1) {
+      return totalSpends;
+    }
+
+    return totalSpends / daysSpan;
   }
 
   init() {
