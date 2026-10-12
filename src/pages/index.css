@@ -22,7 +22,7 @@
     height: 18em;
     top: -5em;
     right: -4em;
-    background: rgba(159, 212, 207, 0.85);
+    background: rgba(100, 180, 172, 0.7);
 }
 
 .layout::after {
@@ -30,7 +30,7 @@
     height: 20em;
     bottom: 2em;
     left: -7em;
-    background: rgba(55, 113, 134, 0.45);
+    background: rgba(40, 90, 105, 0.5);
 }
 
 .layout__page-content {
@@ -53,11 +53,14 @@
 }
 
 .spends-form__button {
-    background: var(--glass-bg-strong);
-    backdrop-filter: blur(0.8em) saturate(1.4);
-    -webkit-backdrop-filter: blur(0.8em) saturate(1.4);
-    border: 1px solid var(--glass-border-soft);
-    box-shadow: var(--glass-highlight);
+    background: rgba(55, 95, 105, 0.38);
+    backdrop-filter: blur(1.1em) saturate(1.6);
+    -webkit-backdrop-filter: blur(1.1em) saturate(1.6);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+        0 0.25em 0.75em rgba(20, 40, 50, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    color: #f7fcfa;
 }
 
 .app-version {

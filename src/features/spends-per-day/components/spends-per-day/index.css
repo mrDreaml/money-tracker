@@ -2,6 +2,9 @@ spends-per-day {
     display: flex;
     gap: 0.65em;
     align-items: baseline;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
     padding: 1em 1.35em;
     border-radius: var(--radius-lg);
     background: var(--glass-bg);

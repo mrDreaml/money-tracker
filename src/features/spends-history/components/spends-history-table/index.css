@@ -1,11 +1,16 @@
 spends-history-table {
     display: block;
+    box-sizing: border-box;
     width: 100%;
-    font-size: 1.2em;
+    max-width: 100%;
+    min-width: 0;
+    font-size: 0.9em;
 }
 
 .spends-history-table {
     width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     background: var(--glass-bg-strong);
     backdrop-filter: blur(1em) saturate(1.4);
@@ -14,6 +19,12 @@ spends-history-table {
     overflow: hidden;
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow), var(--glass-highlight);
+}
+
+.spends-history-table th,
+.spends-history-table td {
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .spends-history-table__empty-table {
@@ -109,12 +120,8 @@ spends-history-table {
 }
 
 @media (max-width: 768px) {
-    .spends-history-table {
-        font-size: 0.9em;
-    }
-
     .spends-history-table th,
     .spends-history-table td {
-        padding: 8px 12px;
+        padding: 8px 10px;
     }
 }
