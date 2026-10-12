@@ -1,24 +1,31 @@
 .spends-form {
     display: flex;
     flex-direction: column;
-    margin: 1.25em 0 0 0;
-    /* 20% = 1.25em (assuming 16px base) */
-    width: 100%;
+    margin: 1.25em 0 0;
     gap: 1em;
+    padding: 1.15em;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1.75em) saturate(1.8);
+    -webkit-backdrop-filter: blur(1.75em) saturate(1.8);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 0.6em 2em rgba(55, 113, 134, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .spends-form__input-container {
     display: flex;
-    gap: .5em;
+    gap: 0.5em;
     box-sizing: border-box;
     justify-content: center;
 }
 
 .spends-form__input-wrapper {
     position: relative;
-    border: none;
-    border-radius: 1em;
-    padding: .5em;
+    border: 1px solid var(--glass-border-soft);
+    border-radius: var(--radius-md);
+    padding: 0.5em;
     font-size: 1.2em;
     text-align: center;
     width: 100%;
@@ -26,7 +33,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-pallete-1);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(0.9em) saturate(1.4);
+    -webkit-backdrop-filter: blur(0.9em) saturate(1.4);
+    box-shadow: var(--glass-highlight);
     color: var(--color-text-1);
 }
 
@@ -45,21 +55,33 @@
     color: var(--color-text-1);
 }
 
+.spends-form__input-formatted {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
 .spends-form__button {
-    border: none;
-    border-radius: 1em;
+    border: 1px solid var(--glass-border-soft);
+    border-radius: var(--radius-md);
     padding: 1em;
     font-size: 1.2em;
+    font-weight: 600;
     text-align: center;
     color: var(--color-text-1);
+    background: var(--glass-bg-strong);
 }
 
 .spends-form__submit {
     border: none;
-    border-radius: 1em;
-    padding: 1em 2em;
-    font-size: 1.2em;
+    border-radius: var(--radius-md);
+    padding: 1em 2.25em;
+    font-size: 1.15em;
+    font-weight: 600;
     text-align: center;
     align-self: center;
-    background-color: var(--color-pallete-3);
+    color: #fff;
+    background: linear-gradient(145deg, #68a0a8 0%, #377186 100%);
+    box-shadow:
+        0 0.5em 1.25em rgba(55, 113, 134, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }

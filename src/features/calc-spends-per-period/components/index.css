@@ -2,27 +2,62 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-    width: 300px;
+    width: min(300px, 90%);
     align-items: center;
-
-    padding-bottom: 3em;
-    padding-top: 3em;
-    border-bottom: 1px solid #ddd;
-    border-top: 1px solid #ddd;
+    padding: 1.5em 1.25em;
+    margin: 0.5em 0;
+    border-radius: var(--radius-lg, 1.75em);
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(1.25em) saturate(1.5);
+    -webkit-backdrop-filter: blur(1.25em) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 0.5em 1.5em rgba(55, 113, 134, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .date-row {
     display: flex;
+    align-items: center;
+    gap: 0.5em;
+    width: 100%;
 
     label {
         width: 50px;
+        color: var(--color-text-1, #1e3d47);
+        font-weight: 500;
+    }
+
+    input[type="date"] {
+        flex: 1;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 0.85em;
+        padding: 0.55em 0.7em;
+        background: rgba(255, 255, 255, 0.5);
+        color: var(--color-text-1, #1e3d47);
+        font-family: inherit;
     }
 }
 
 .calc-button {
     border: none;
-    background-color: var(--color-pallete-3);
-    padding: 1em 2em;
+    background: linear-gradient(145deg, #68a0a8 0%, #377186 100%);
+    padding: 0.9em 2em;
     border-radius: 1em;
-    color: black;
+    color: #fff;
+    font-weight: 600;
+    font-family: inherit;
+    box-shadow:
+        0 0.4em 1em rgba(55, 113, 134, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.calc-result {
+    color: var(--color-text-1, #1e3d47);
+    text-align: center;
+    font-size: 0.95em;
+
+    b {
+        color: var(--color-teal-deep, #377186);
+    }
 }

@@ -1,10 +1,7 @@
-/* 
- * CSS Rule: Use em units for font-size, padding, margin, and other size-related properties
- * This provides better scalability and accessibility
- */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
+
 * {
-    font-family: 'Roboto', sans-serif;
-    /* Prevent double-tap zoom on iPhone */
+    font-family: "Outfit", sans-serif;
     touch-action: manipulation;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -14,26 +11,65 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--color-pallete-0);
     position: fixed;
     width: 100%;
     height: 100%;
+    color: var(--color-text-1);
+    background:
+        radial-gradient(100% 70% at 0% 0%, #f2fbf8 0%, transparent 45%),
+        radial-gradient(90% 60% at 100% 10%, #9fd4cf 0%, transparent 48%),
+        radial-gradient(80% 55% at 20% 100%, #5898a0 0%, transparent 50%),
+        radial-gradient(70% 50% at 90% 85%, #377186 0%, transparent 45%),
+        linear-gradient(160deg, #e8f6f3 0%, #b5ddd8 42%, #6a9aa8 100%);
 
+    --color-pallete-0: rgba(255, 255, 255, 0.42);
+    --color-pallete-1: rgba(255, 255, 255, 0.28);
+    --color-pallete-2: rgba(168, 208, 208, 0.55);
+    --color-pallete-3: #5898a0;
+    --color-pallete-4: #377186;
 
-    --color-pallete-0: #fff;
-    --color-pallete-1: #FAF7F3;
-    --color-pallete-2: #F0E4D3;
-    --color-pallete-3: #DCC5B2;
-    --color-pallete-4: #D9A299;
+    --color-text-1: #1e3d47;
+    --color-text-2: #5a7a82;
 
-    --color-text-1: #222;
-    --color-text-2: #666;
+    --color-mint: #c0e0d8;
+    --color-mint-soft: #dff0ec;
+    --color-teal: #5898a0;
+    --color-teal-deep: #377186;
+    --color-teal-mid: #408090;
+
+    --glass-bg: rgba(255, 255, 255, 0.22);
+    --glass-bg-strong: rgba(255, 255, 255, 0.36);
+    --glass-border: rgba(255, 255, 255, 0.62);
+    --glass-border-soft: rgba(255, 255, 255, 0.4);
+    --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    --glass-shadow: 0 0.5em 2em rgba(55, 113, 134, 0.18);
+    --glass-blur: blur(1.75em) saturate(1.8);
+    --radius-lg: 1.75em;
+    --radius-md: 1.25em;
+    --radius-sm: 0.9em;
+}
+
+button {
+    font-family: inherit;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
+}
+
+button:active {
+    transform: scale(0.97);
 }
 
 input:focus {
     outline: none;
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), var(--glass-highlight);
 }

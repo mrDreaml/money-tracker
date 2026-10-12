@@ -6,7 +6,35 @@
     display: flex;
     flex-direction: column;
     height: 100dvh;
-    background-color: var(--color-pallete-1);
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.layout::before,
+.layout::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2.5em);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.layout::before {
+    width: 18em;
+    height: 18em;
+    top: -5em;
+    right: -4em;
+    background: rgba(159, 212, 207, 0.85);
+}
+
+.layout::after {
+    width: 20em;
+    height: 20em;
+    bottom: 2em;
+    left: -7em;
+    background: rgba(55, 113, 134, 0.45);
 }
 
 .layout__page-content {
@@ -14,28 +42,32 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    border-radius: 0 0 2em 2em;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     width: 100%;
     align-items: center;
-    overflow-y: scroll;
-    padding: 2em 1em 1em 1em;
-    height: calc(100dvh - 6em);
-    z-index: 1000;
-    background-color: var(--color-pallete-0);
+    overflow-y: auto;
+    padding: 2em 1em 1.5em;
+    height: calc(100dvh - 6.5em);
+    z-index: 1;
+    position: relative;
+    background: transparent;
 }
 
 .layout__page-content-wrapper {
-    max-width: 350px;
     width: 100%;
 }
 
 .spends-form__button {
-    background-color: var(--color-pallete-1);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(0.8em) saturate(1.4);
+    -webkit-backdrop-filter: blur(0.8em) saturate(1.4);
+    border: 1px solid var(--glass-border-soft);
+    box-shadow: var(--glass-highlight);
 }
 
 .app-version {
     text-align: center;
-    font-size: .8em;
+    font-size: 0.8em;
     margin-top: 2em;
+    color: var(--color-text-2);
+    opacity: 0.8;
 }

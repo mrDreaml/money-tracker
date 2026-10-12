@@ -7,13 +7,18 @@ class View extends HTMLElement {
   #data = [];
   #totalSpendsEl = null;
   #colors = [
-    "#FF6384",
-    "#36A2EB",
-    "#FFCE56",
-    "#4BC0C0",
-    "#9966FF",
-    "#FF9F40",
-    "#FF6384",
+    "#377186",
+    "#E07A5F",
+    "#3D5A80",
+    "#F2CC8F",
+    "#81B29A",
+    "#9B5DE5",
+    "#00BBF9",
+    "#FF6B6B",
+    "#E9C46A",
+    "#F15BB5",
+    "#4ECDC4",
+    "#7B68EE",
   ];
 
   getData = () => [];
@@ -116,7 +121,7 @@ class View extends HTMLElement {
           title: {
             display: true,
             text: "Недельные траты",
-            color: "#333",
+            color: "#1e3d47",
             font: {
               size: 16,
               weight: "bold",
@@ -127,10 +132,10 @@ class View extends HTMLElement {
           y: {
             beginAtZero: true,
             grid: {
-              color: "rgba(244, 244, 244, 0.1)",
+              color: "rgba(55, 113, 134, 0.1)",
             },
             ticks: {
-              color: "#666",
+              color: "#5a7a82",
               font: {
                 size: 12,
               },
@@ -141,7 +146,7 @@ class View extends HTMLElement {
               display: false,
             },
             ticks: {
-              color: "#666",
+              color: "#5a7a82",
               font: {
                 size: 11,
               },

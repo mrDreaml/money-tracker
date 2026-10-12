@@ -3,23 +3,43 @@ nav-section {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 1.5em;
-    background-color: var(--color-pallete-1);
-    width: 100%;
+    padding: 0.75em 1em;
+    margin: 0.6em 0.9em 0.9em;
+    width: calc(100% - 1.8em);
     box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+    border-radius: 1.5em;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2em) saturate(1.9);
+    -webkit-backdrop-filter: blur(2em) saturate(1.9);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow:
+        0 0.6em 1.8em rgba(55, 113, 134, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
 }
 
 .nav-section__item {
-    color: var(--color-text-1);
+    color: var(--color-text-2);
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: .25em;
+    gap: 0.2em;
+    padding: 0.4em 0.9em;
+    border-radius: 1em;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+
+    svg {
+        fill: currentColor;
+        transition: fill 0.2s ease;
+    }
 
     &[active] {
         color: var(--color-pallete-4);
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
 
         svg {
             fill: var(--color-pallete-4);
@@ -28,18 +48,18 @@ nav-section {
 }
 
 .nav-section__item-title {
-    font-size: .8em;
+    font-size: 0.75em;
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 @view-transition {
     navigation: auto;
 }
 
-
 ::view-transition-new(content) {
-    animation: slide-from-top .3s ease-in-out;
+    animation: slide-from-top 0.3s ease-in-out;
 }
-
 
 @keyframes slide-from-top {
     from {

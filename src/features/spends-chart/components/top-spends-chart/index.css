@@ -1,9 +1,10 @@
 top-spends-chart {
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 1.25em;
     width: 100%;
     box-sizing: border-box;
+    padding: 0 0.75em;
 }
 
 .chart-container {
@@ -12,6 +13,13 @@ top-spends-chart {
     align-items: center;
     justify-content: center;
     height: 400px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(1em) saturate(1.4);
+    -webkit-backdrop-filter: blur(1em) saturate(1.4);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), var(--glass-highlight);
+    padding: 0.75em;
 }
 
 .chart-legend {
@@ -19,26 +27,29 @@ top-spends-chart {
     flex-direction: column;
     gap: 0.5em;
     padding: 1em;
-    border-radius: 2em;
+    border-radius: var(--radius-lg);
     height: 100%;
-    background: var(--color-pallete-0);
+    background: var(--glass-bg);
+    backdrop-filter: blur(1em) saturate(1.4);
+    -webkit-backdrop-filter: blur(1em) saturate(1.4);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-highlight);
 }
 
 .legend-item {
     display: flex;
     align-items: center;
     gap: 0.75em;
-    padding: 0.5em;
-    border-radius: 6px;
+    padding: 0.55em 0.65em;
     cursor: pointer;
     transition: all 0.2s ease;
-    border-radius: 1em;
+    border-radius: var(--radius-sm);
+    animation: fadeIn 0.3s ease-out;
 }
 
 .legend-item:hover,
 .legend-item.active {
-    background: var(--color-pallete-1);
-    border-color: var(--color-pallete-1, #007bff);
+    background: rgba(192, 224, 216, 0.45);
     transform: translateX(4px);
 }
 
@@ -46,8 +57,8 @@ top-spends-chart {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 1px 3px rgba(55, 113, 134, 0.2);
     flex-shrink: 0;
 }
 
@@ -58,7 +69,7 @@ top-spends-chart {
 
 .legend-label {
     font-weight: 600;
-    color: #333;
+    color: var(--color-text-1);
     font-size: 0.9em;
     margin-bottom: 0.25em;
     white-space: nowrap;
@@ -68,7 +79,7 @@ top-spends-chart {
 
 .legend-value {
     font-size: 0.8em;
-    color: #666;
+    color: var(--color-text-2);
     font-weight: 500;
 }
 
@@ -78,7 +89,7 @@ top-spends-chart {
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #999;
+    color: var(--color-text-2);
     text-align: center;
 }
 
@@ -95,31 +106,29 @@ top-spends-chart {
 
 .empty-legend {
     text-align: center;
-    color: #999;
+    color: var(--color-text-2);
     font-style: italic;
     padding: 1em;
 }
 
-/* Стили для скроллбара легенды */
 .chart-legend::-webkit-scrollbar {
     width: 6px;
 }
 
 .chart-legend::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 3px;
 }
 
 .chart-legend::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
+    background: rgba(88, 152, 160, 0.45);
     border-radius: 3px;
 }
 
 .chart-legend::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
+    background: rgba(55, 113, 134, 0.55);
 }
 
-/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     top-spends-chart {
         gap: 1em;
@@ -143,7 +152,6 @@ top-spends-chart {
     }
 }
 
-/* Анимации для плавных переходов */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -156,11 +164,6 @@ top-spends-chart {
     }
 }
 
-.legend-item {
-    animation: fadeIn 0.3s ease-out;
-}
-
-/* Стили для состояния загрузки */
 .loading {
     display: flex;
     align-items: center;
@@ -169,11 +172,11 @@ top-spends-chart {
 }
 
 .loading::after {
-    content: '';
+    content: "";
     width: 20px;
     height: 20px;
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid var(--color-pallete-2, #007bff);
+    border: 2px solid rgba(192, 224, 216, 0.5);
+    border-top: 2px solid var(--color-pallete-4);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
