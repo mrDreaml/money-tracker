@@ -1,4 +1,4 @@
-const CACHE_NAME = "v3";
+const CACHE_NAME = "v4";
 
 self.addEventListener("install", (event) => {
   console.log("Service Worker: Installing...");
@@ -18,9 +18,9 @@ self.addEventListener("activate", (event) => {
           .map((name) => {
             console.log(`clean old cache: ${name}`);
             return caches.delete(name);
-          })
+          }),
       );
-    })
+    }),
   );
 
   self.clients.claim();
@@ -46,7 +46,6 @@ self.addEventListener("fetch", (event) => {
           .then((cache) => cache.put(request, responseNew));
         return responseNew.clone();
       });
-    })
+    }),
   );
 });
-
