@@ -1,7 +1,3 @@
-@import url("../../features/page/styles/common.css");
-@import url("../../features/main-navigation/components/nav-section/index.css");
-@import url("../../features/spends-history/components/spends-history-table/index.css");
-
 .layout {
     display: flex;
     flex-direction: column;

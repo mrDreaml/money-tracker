@@ -3,18 +3,21 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../src/pages/report/index.css">
-  <link rel="stylesheet" href="../src/features/spends-chart/components/spends-per-periods/index.css">
-  <link rel="icon" href="../src/features/page/assets/favicon.ico">
-  <link rel="apple-touch-icon" href="../src/features/page/assets/icon-192x192.png">
-  <link rel="manifest" href="../manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="/money-tracker/src/features/page/styles/common.css">
+  <link rel="stylesheet" href="/money-tracker/src/features/main-navigation/components/nav-section/index.css">
+  <link rel="stylesheet" href="/money-tracker/src/features/spends-per-day/components/spends-per-day/index.css">
+  <link rel="stylesheet" href="/money-tracker/src/features/spends-chart/components/top-spends-chart/index.css">
+  <link rel="stylesheet" href="/money-tracker/src/features/spends-chart/components/spends-per-periods/index.css">
+  <link rel="stylesheet" href="/money-tracker/src/pages/report/index.css">
+  <link rel="icon" href="/money-tracker/src/features/page/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/money-tracker/src/features/page/assets/icon-192x192.png">
+  <link rel="manifest" href="/money-tracker/manifest.json">
   <meta name="theme-color" content="#5898a0">
   <meta name="description" content="Приложение для отслеживания расходов и управления бюджетом">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Gold Rock">
+  <meta name="apple-mobile-web-app-title" content="Money Tracker">
   <title>Money Tracker</title>
 </head>
 
@@ -22,7 +25,7 @@
   <mobile-only>
     <template shadowrootmode="open">
       <style>
-        @import "../src/features/mobile-only/components/index.css";
+        @import "/money-tracker/src/features/mobile-only/components/index.css";
       </style>
       <div class="mobile-only" data-id="mobile-only" hidden>
         <h1>Это приложение доступно только на мобильных устройствах</h1>
@@ -46,7 +49,7 @@
         </top-spends-chart>
         <calc-spends-per-period id="calc-spends-per-period">
           <template shadowrootmode="open">
-            <link rel="stylesheet" href="../src/features/calc-spends-per-period/components/index.css" />
+            <link rel="stylesheet" href="/money-tracker/src/features/calc-spends-per-period/components/index.css" />
 
             <div class="date-row">
               <label for="start-date">C</label>
@@ -72,7 +75,7 @@
       </main>
 
       <nav-section>
-        <a href="" class="nav-section__item" active>
+        <a href="/money-tracker/report/" class="nav-section__item" active>
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
             fill="var(--color-text-1)">
             <path
@@ -80,7 +83,7 @@
           </svg>
           <b class="nav-section__item-title">Отчет</b>
         </a>
-        <a href="../" class="nav-section__item">
+        <a href="/money-tracker/" class="nav-section__item">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
             fill="var(--color-text-1)">
             <path
@@ -88,7 +91,7 @@
           </svg>
           <b class="nav-section__item-title">Дом</b>
         </a>
-        <a href="../history" class="nav-section__item">
+        <a href="/money-tracker/history/" class="nav-section__item">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
             fill="var(--color-text-1)">
             <path
@@ -104,11 +107,12 @@
     {
       "imports": {
         "chart.js": "https://cdn.jsdelivr.net/npm/chart.js",
-        "features/": "../src/features/"
+        "features/": "/money-tracker/src/features/"
       }
     }
   </script>
-  <script type="module" src="../src/pages/report/index.js"></script>
+  <script type="module" src="/money-tracker/src/pages/report/index.js"></script>
+  <script type="module" src="/money-tracker/pwa.js"></script>
 </body>
 
 </html>

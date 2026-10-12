@@ -3,12 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/pages/index.css">
-    <link rel="icon" href="src/features/page/assets/favicon.ico">
-    <link rel="apple-touch-icon" href="src/features/page/assets/icon-192x192.png">
-    <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/money-tracker/src/features/page/styles/common.css">
+    <link rel="stylesheet" href="/money-tracker/src/features/main-navigation/components/nav-section/index.css">
+    <link rel="stylesheet" href="/money-tracker/src/features/add-spends/components/spends-form/index.css">
+    <link rel="stylesheet" href="/money-tracker/src/pages/index.css">
+    <link rel="icon" href="/money-tracker/src/features/page/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/money-tracker/src/features/page/assets/icon-192x192.png">
+    <link rel="manifest" href="/money-tracker/manifest.json">
     <meta name="theme-color" content="#5898a0">
     <meta name="description" content="Приложение для отслеживания расходов и управления бюджетом">
     <meta name="mobile-web-app-capable" content="yes">
@@ -21,7 +23,7 @@
     <mobile-only>
         <template shadowrootmode="open">
             <style>
-                @import "src/features/mobile-only/components/index.css";
+                @import "/money-tracker/src/features/mobile-only/components/index.css";
             </style>
             <div class="mobile-only" data-id="mobile-only" hidden>
                 <h1>Это приложение доступно только на мобильных устройствах</h1>
@@ -37,7 +39,7 @@
                             <available-spends id="available-spends">
                                 <template shadowrootmode="open">
                                     <style>
-                                        @import "src/features/add-spends/components/available-spends/index.css";
+                                        @import "/money-tracker/src/features/add-spends/components/available-spends/index.css";
                                     </style>
 
                                     <div class="spend-tag" data-id="tag" data-value="Одежда">Одежда</div>
@@ -78,7 +80,7 @@
             </main>
 
             <nav-section>
-                <a href="report" class="nav-section__item">
+                <a href="/money-tracker/report/" class="nav-section__item">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                         fill="var(--color-text-1)">
                         <path
@@ -86,7 +88,7 @@
                     </svg>
                     <b class="nav-section__item-title">Отчет</b>
                 </a>
-                <a href="" class="nav-section__item" active>
+                <a href="/money-tracker/" class="nav-section__item" active>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                         fill="var(--color-text-1)">
                         <path
@@ -94,7 +96,7 @@
                     </svg>
                     <b class="nav-section__item-title">Дом</b>
                 </a>
-                <a href="history" class="nav-section__item">
+                <a href="/money-tracker/history/" class="nav-section__item">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                         fill="var(--color-text-1)">
                         <path
@@ -109,13 +111,13 @@
     <script type="importmap">
         {
           "imports": {
-            "features/": "./src/features/"
+            "features/": "/money-tracker/src/features/"
           }
         }
       </script>
 
-    <script type="module" src="src/pages/index.js"></script>
-    <script type="module" src="pwa.js"></script>
+    <script type="module" src="/money-tracker/src/pages/index.js"></script>
+    <script type="module" src="/money-tracker/pwa.js"></script>
 </body>
 
 </html>
